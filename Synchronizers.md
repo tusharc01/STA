@@ -1,6 +1,6 @@
 ### Understanding Synchronizers in Digital Circuits
 
-It comes from digital design, particularly in synchronous systems where timing is critical. I'll break it down step by step, building on the description you provided, to make it clearer. This is especially relevant in fields like FPGA or ASIC design, where signals from different clock domains can cause issues.
+It comes from digital design, particularly in synchronous systems where timing is critical. This is especially relevant in fields like FPGA or ASIC design, where signals from different clock domains can cause issues.
 
 #### What Are Synchronous and Asynchronous Signals?
 - In a **synchronous system**, all operations are timed to a single clock signal. Flip-flops (basic storage elements) capture data on clock edges, but they require the input data to be stable for a short period before (setup time) and after (hold time) the clock edge. Violating these can lead to unpredictable behavior.
