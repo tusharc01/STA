@@ -7,6 +7,20 @@ Timing analysis is integral part of ASIC/VLSI design flow. Anything else can be 
 
 ---
 
+<p align="center">
+  <img src="https://github.com/tusharc01/STA/blob/main/img/setup_hold.png?raw=true" width="500"/>
+</p>
+
+**Why the hold time check is performed at the same clock edge?**
+
+The **hold check** ensures that the **new data**, launched by a clock edge, **doesn't arrive at the next flip-flop too quickly** and corrupt the data that the same clock edge is attempting to capture.
+
+To prevent this, the **newly launched data must be held stable for a short duration after the clock edge**. This required time is known as the **hold time** of the **capturing flip-flop**.
+
+By satisfying the hold requirement, we ensure that the **previous data** being captured isn't overwritten prematurely by the **new data**.
+
+---
+
 **System Setup Time** ≥ **T\_setup\_ff** + **Tpd DIN (max)** − **Tpd Clk (min)**
 
 * **T\_setup\_ff**: This is the internal setup time of the flip-flop itself. It's the non-negotiable requirement from the component's datasheet. Your calculation is incomplete without it.
@@ -19,32 +33,34 @@ Timing analysis is integral part of ASIC/VLSI design flow. Anything else can be 
 
 ---
 
-Step-by-step process to calculate the **System Setup Time** using that formula.
+
+### Step-by-step process to calculate the **System Setup Time** using that formula.
 
 This calculation tells you the setup time requirement for your circuit's input port, as seen from the outside world. It's the value you would publish in a datasheet.
 
-### ## Step 1: Find `T_setup_ff` (Internal Flip-Flop Setup Time)
+**Step 1: Find `T_setup_ff` (Internal Flip-Flop Setup Time)**
 
 This value is **not calculated**. It is a fixed physical property of the flip-flop you are using.
 
 * **Action:** Look up this value in the **datasheet** or the **standard cell library** provided by the manufacturer for your specific technology.
 
-### ## Step 2: Find `Tpd DIN (max)` (Maximum Data Path Delay)
+**Step 2: Find `Tpd DIN (max)` (Maximum Data Path Delay)**
 
 This is the longest possible time it takes for a signal to travel from the external `DIN` pin to the D-input of the first flip-flop inside your chip.
 
 * **Action:** Use a Static Timing Analysis (STA) tool to report the path delay. The tool calculates this by summing the **maximum** delays of all components on the path:
-    * Input buffer delay
-    * Combinational logic gate delays
-    * Net and wire delays
 
-### ## Step 3: Find `Tpd Clk (min)` (Minimum Clock Path Delay)
+  * Input buffer delay
+  * Combinational logic gate delays
+  * Net and wire delays
+
+**Step 3: Find `Tpd Clk (min)` (Minimum Clock Path Delay)**
 
 This is the shortest possible time it takes for the clock signal to travel from the external `CLK` pin to the clock input of that same flip-flop.
 
 * **Action:** Use the STA tool to report this path delay. The tool calculates this by summing the **minimum** delays of the buffers and wires along the clock path.
 
-### ## Step 4: Calculate the System Setup Time
+**Step 4: Calculate the System Setup Time**
 
 Now, plug the values from the previous steps into the formula.
 
@@ -54,18 +70,21 @@ The result is the setup time requirement for any external device that needs to s
 
 ---
 
-## ## Different Paths for Different Analyses
+### Different Paths for Different Analyses
 
-### 1. **Input-to-FF Path**
+**1. Input-to-FF Path**
+
 * **Purpose:** To define the **System Setup Time** for the chip's input ports.
 * **Formula Used:** The one you asked about: `System Setup Time = T_setup_ff + Tpd DIN(max) - Tpd Clk(min)`.
 
-### 2. **FF-to-FF Path**
+**2. FF-to-FF Path**
+
 * **Purpose:** To determine the **maximum internal operating frequency** of your chip. This is the most common analysis for the chip's core logic.
 * **Formula Used:** The analysis checks if `T_logic_delay(max) + T_clk-q + T_setup_ff <= Clock Period`.
 
-### 3. **FF-to-Output Path**
+**3. FF-to-Output Path**
+
 * **Purpose:** To define the **Clock-to-Output Time (`T_co`)** for the chip's output ports. This tells an external device how long it has to wait after a clock edge for the output data to be valid.
 
-In short, you don't use the FF-to-FF path to calculate the "System Setup Time" because that's not what it's for. You analyze the FF-to-FF path separately to find your maximum clock speed. Each path type gives you a different, critical piece of information about your design's overall performance.
 
+In short, you don't use the FF-to-FF path to calculate the "System Setup Time" because that's not what it's for. You analyze the FF-to-FF path separately to find your maximum clock speed. Each path type gives you a different, critical piece of information about your design's overall performance.
