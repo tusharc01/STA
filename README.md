@@ -1,5 +1,6 @@
 # STA
 Timing analysis is integral part of ASIC/VLSI design flow. Anything else can be compromised but not timing!
+[Source: VLSI Expert – Static Timing Analysis](https://www.vlsi-expert.com/p/static-timing-analysis.html)
 
 
 
