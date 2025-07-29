@@ -1,3 +1,13 @@
+If we consider all combinations of 2 types of Starting Points and 2 types of End Points, there are **4 types of Timing Paths** based on the Start and End points:
+
+* **Input pin/port to Register (flip-flop)**
+* **Input pin/port to Output pin/port**
+* **Register (flip-flop) to Register (flip-flop)**
+* **Register (flip-flop) to Output pin/port**
+
+---
+
+
 ### Understanding False Paths in ASIC Design
 
 A false path in ASIC design is a path that exists topologically in the design but is never functionally exercised under normal operating conditions. Therefore, Static Timing Analysis (STA) does not need to analyze or optimize these paths. Setting a false path using the set_false_path command in the Synopsys Design Constraints (SDC) file instructs the timing analysis tool to ignore these paths during timing analysis, which helps reduce complexity, improve timing analysis efficiency, and achieve timing closure. 
