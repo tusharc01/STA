@@ -7,6 +7,8 @@ If we consider all combinations of 2 types of Starting Points and 2 types of End
 * **Register (flip-flop) to Register (flip-flop)**
 * **Register (flip-flop) to Output pin/port**
 
+### Data Paths
+
 ---
 
 
