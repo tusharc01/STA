@@ -14,11 +14,6 @@ Timing analysis is integral part of ASIC/VLSI design flow. Anything else can be 
 
 **System Hold Time** ≥ **T\_hold\_ff** + **Tpd Clk (max)** − **Tpd DIN (min)**
 
----
-
-You're asking a great question that highlights the different purposes of timing analysis.
-
-You are correct. That specific formula only uses the **input-to-FF path**. This is because the formula is used to calculate one specific thing: the setup time requirement **at the input pins of your chip**. It defines the timing contract for an *external* device that needs to send data *to* your chip.
 
 ---
 
