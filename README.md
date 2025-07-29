@@ -11,3 +11,9 @@ Timing analysis is integral part of ASIC/VLSI design flow. Anything else can be 
 * **Tpd DIN (max)**: The longest possible delay for the data path.
 * **Tpd Clk (min)**: The shortest possible delay for the clock path.
 
+
+**System Hold Time** ≥ **T\_hold\_ff** + **Tpd Clk (max)** − **Tpd DIN (min)**
+
+---
+
+
