@@ -14,7 +14,9 @@ If we consider all combinations of 2 types of Starting Points and 2 types of End
 
 ### Clock Path
 
-
+<p align="center">
+  <img src="https://github.com/tusharc01/STA/blob/main/img/clock%20path.png?raw=true" width="600"/>
+</p>
 
 ---
 
