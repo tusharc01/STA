@@ -21,14 +21,12 @@ Step-by-step process to calculate the **System Setup Time** using that formula.
 
 This calculation tells you the setup time requirement for your circuit's input port, as seen from the outside world. It's the value you would publish in a datasheet.
 
----
 ### ## Step 1: Find `T_setup_ff` (Internal Flip-Flop Setup Time)
 
 This value is **not calculated**. It is a fixed physical property of the flip-flop you are using.
 
 * **Action:** Look up this value in the **datasheet** or the **standard cell library** provided by the manufacturer for your specific technology.
 
----
 ### ## Step 2: Find `Tpd DIN (max)` (Maximum Data Path Delay)
 
 This is the longest possible time it takes for a signal to travel from the external `DIN` pin to the D-input of the first flip-flop inside your chip.
@@ -38,14 +36,12 @@ This is the longest possible time it takes for a signal to travel from the exter
     * Combinational logic gate delays
     * Net and wire delays
 
----
 ### ## Step 3: Find `Tpd Clk (min)` (Minimum Clock Path Delay)
 
 This is the shortest possible time it takes for the clock signal to travel from the external `CLK` pin to the clock input of that same flip-flop.
 
 * **Action:** Use the STA tool to report this path delay. The tool calculates this by summing the **minimum** delays of the buffers and wires along the clock path.
 
----
 ### ## Step 4: Calculate the System Setup Time
 
 Now, plug the values from the previous steps into the formula.
