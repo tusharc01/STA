@@ -14,8 +14,8 @@ Timing analysis is integral part of ASIC/VLSI design flow. Anything else can be 
 **Why the hold time check is performed at the same clock edge?**
 
 The **hold check** ensures that the **new data**, launched by a clock edge, **doesn't arrive at the next flip-flop too quickly** and corrupt the data that the same clock edge is attempting to capture.
-
-To prevent this, the **newly launched data must be held stable for a short duration after the clock edge**. This required time is known as the **hold time** of the **capturing flip-flop**.
+To prevent this, the data at the input of the capturing flip-flop (FF2) must remain stable for a short duration after the clock edge. This required time is known as the hold time of the capturing flip-flop.
+This ensures that the new data launched from FF1 is delayed by the path long enough to prevent it from altering the input of FF2 until after FF2 has securely **captured** the old data.
 
 By satisfying the hold requirement, we ensure that the **previous data** being captured isn't overwritten prematurely by the **new data**.
 
