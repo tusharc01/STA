@@ -1,3 +1,5 @@
+### Data Paths
+
 If we consider all combinations of 2 types of Starting Points and 2 types of End Points, there are **4 types of Timing Paths** based on the Start and End points:
 
 * **Input pin/port to Register (flip-flop)**
