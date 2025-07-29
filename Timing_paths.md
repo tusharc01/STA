@@ -7,7 +7,14 @@ If we consider all combinations of 2 types of Starting Points and 2 types of End
 * **Register (flip-flop) to Register (flip-flop)**
 * **Register (flip-flop) to Output pin/port**
 
-### Data Paths
+<p align="center">
+  <img src="https://github.com/tusharc01/STA/blob/main/img/data%20paths.png?raw=true" width="600"/>
+</p>
+
+
+### Clock Path
+
+
 
 ---
 
